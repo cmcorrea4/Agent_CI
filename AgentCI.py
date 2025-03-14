@@ -1,90 +1,135 @@
 import streamlit as st
 import streamlit.components.v1 as components
-import base64
-from PIL import Image
-import io
 
 # Configuración de la página
 st.set_page_config(
     page_title="CONSTRUINMUNIZA - Asistente Virtual",
     page_icon="🌲",
     layout="wide",
-    initial_sidebar_state="collapsed"  # Sidebar colapsado inicialmente para más espacio central
+    initial_sidebar_state="collapsed"
 )
 
-# Estilos CSS personalizados (simplificados)
+# Estilos CSS optimizados para diseño compacto y profesional
 st.markdown("""
 <style>
+    /* Estilos generales */
     .main {
         background-color: #ffffff;
+        padding: 0 !important;
     }
     .stApp {
         max-width: 1200px;
         margin: 0 auto;
     }
-    .logo-container {
+    
+    /* Eliminar espacios innecesarios */
+    .block-container {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        margin-top: 0 !important;
+    }
+    .css-18e3th9 {
+        padding-top: 0 !important;
+    }
+    .css-1d391kg {
+        padding-top: 0 !important;
+    }
+    
+    /* Header compacto */
+    .header-container {
         display: flex;
-        justify-content: center;
-        margin: 2rem 0;
-    }
-    .logo {
-        max-height: 150px;
-    }
-    .company-name {
-        text-align: center;
-        color: #031B4E;
-        font-size: 2.5rem;
-        font-weight: 700;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 2rem;
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #eaeaea;
         margin-bottom: 0.5rem;
     }
+    .header-left {
+        display: flex;
+        flex-direction: column;
+    }
+    .company-name {
+        color: #031B4E;
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin: 0;
+        line-height: 1.2;
+    }
     .tagline {
-        text-align: center;
-        color: #555;
-        font-size: 1.4rem;
-        margin-bottom: 2.5rem;
-    }
-    .chatbot-container {
-        background-color: white;
-        padding: 1rem;
-        border-radius: 8px;
-        margin: 1rem auto;
-        width: 100%;
-        min-height: 500px;
-    }
-    .footer {
-        margin-top: 2rem;
-        text-align: center;
         color: #555;
         font-size: 0.9rem;
-        padding-top: 1rem;
+        margin: 0;
     }
-    /* Eliminar bordes de los widgets de Streamlit */
-    .block-container {
-        padding-top: 1rem;
+    
+    /* Contenedor de chatbot */
+    .chatbot-container {
+        padding: 0;
+        margin: 0 auto;
+        width: 100%;
+    }
+    
+    /* Productos */
+    .products-container {
+        display: flex;
+        justify-content: center;
+        padding: 0.5rem 1rem;
+        background-color: #f1f1f1;
+        border-radius: 4px;
+        margin: 0.5rem 0;
+    }
+    .product-list {
+        display: flex;
+        gap: 2rem;
+    }
+    .product-item {
+        margin: 0;
+        padding: 0;
+    }
+    
+    /* Footer */
+    .footer {
+        text-align: center;
+        color: #666;
+        font-size: 0.75rem;
+        padding: 0.5rem 0;
+        border-top: 1px solid #eaeaea;
+        margin-top: 0.5rem;
     }
 </style>
 """, unsafe_allow_html=True)
 
-# Encabezado con logo centralizado
-st.markdown('<h1 class="company-name">CONSTRUINMUNIZA</h1>', unsafe_allow_html=True)
-st.markdown('<p class="tagline">Especialistas en procesamiento de madera de pino patula</p>', unsafe_allow_html=True)
+# Header compacto con información de la empresa
+st.markdown("""
+<div class="header-container">
+    <div class="header-left">
+        <h1 class="company-name">CONSTRUINMUNIZA</h1>
+        <p class="tagline">Especialistas en procesamiento de madera de pino patula</p>
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
+# Lista de productos en formato horizontal
+st.markdown("""
+<div class="products-container">
+    <div class="product-list">
+        <div class="product-item">
+            <strong>Madera aserrada</strong>
+        </div>
+        <div class="product-item">
+            <strong>Tablas deck</strong>
+        </div>
+        <div class="product-item">
+            <strong>Tablonería</strong>
+        </div>
+        <div class="product-item">
+            <strong>Tablillas</strong>
+        </div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
-# Breve descripción
-col1, col2, col3 = st.columns([1, 2, 1])
-with col2:
-    st.write("""
-    ### Madera de pino patula sostenible
-    
-    Procesamos madera de bosques de reforestación propios certificados FSC, 
-    con procesos de cilindrado, secado e inmunización que garantizan 
-    productos de alta calidad y durabilidad.
-    """)
-
-# Contenedor para el chatbot (simplificado y centrado)
-st.markdown('<div class="chatbot-container">', unsafe_allow_html=True)
-
-# Nuevo snippet del chatbot actualizado
+# Chatbot integrado - sin contenedor adicional para reducir espacio
 chatbot_html = """
 <script async
   src="https://agent-bc5f7ecd070b4c327aa8-h3546.ondigitalocean.app/static/chatbot/widget.js"
@@ -98,21 +143,7 @@ chatbot_html = """
   data-logo="/static/chatbot/icons/default-agent.svg">
 </script>
 """
+components.html(chatbot_html, height=550)
 
-components.html(chatbot_html, height=600)
-st.markdown('</div>', unsafe_allow_html=True)
-
-# Información básica de productos en formato simple
-st.subheader("Nuestros Productos")
-col1, col2 = st.columns(2)
-with col1:
-    st.write("• Madera aserrada")
-    st.write("• Tablas deck")
-with col2:
-    st.write("• Tablonería")
-    st.write("• Tablillas")
-
-# Pie de página simplificado
-st.markdown('<div class="footer">'
-            '© 2025 CONSTRUINMUNIZA. Todos los derechos reservados.'
-            '</div>', unsafe_allow_html=True)
+# Footer minimalista
+st.markdown('<div class="footer">© 2025 CONSTRUINMUNIZA - Procesamiento sostenible de madera de pino patula</div>', unsafe_allow_html=True)
