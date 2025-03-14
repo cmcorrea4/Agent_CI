@@ -101,7 +101,7 @@ chatbot_html = """
   data-secondary-color="#E5E8ED"
   data-button-background-color="#0061EB"
   data-starting-message="Hola !!, en que te puedo ayudar?"
-  data-logo="https://construinmuniza.com/wp-content/uploads/2022/07/Recurso-2.png">
+  data-logo="/static/chatbot/icons/default-agent.svg">
 </script>
 """
 
