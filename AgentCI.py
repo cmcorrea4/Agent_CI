@@ -139,7 +139,7 @@ chatbot_html = """
   data-primary-color="#031B4E"
   data-secondary-color="#E5E8ED"
   data-button-background-color="#0061EB"
-  data-starting-message="Hola!!,soy tu asistente digital de Construimnuniza en que te puedo ayudar?"
+  data-starting-message="Hola!!,soy tu asistente digital de CONSTRUINMUNIZA, en que te puedo ayudar?"
   data-logo="/static/chatbot/icons/default-agent.svg">
 </script>
 """
