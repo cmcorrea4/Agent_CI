@@ -69,12 +69,6 @@ st.markdown("""
 st.markdown('<h1 class="company-name">CONSTRUINMUNIZA</h1>', unsafe_allow_html=True)
 st.markdown('<p class="tagline">Especialistas en procesamiento de madera de pino patula</p>', unsafe_allow_html=True)
 
-# Logo centrado y más grande
-st.markdown('<div class="logo-container">', unsafe_allow_html=True)
-# Usar el logo de la URL proporcionada o una imagen local
-logo_url = "https://construinmuniza.com/wp-content/uploads/2022/07/Recurso-2.png"
-st.image(logo_url, width=300)
-st.markdown('</div>', unsafe_allow_html=True)
 
 # Breve descripción
 col1, col2, col3 = st.columns([1, 2, 1])
